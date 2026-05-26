@@ -2,7 +2,7 @@
 color: teal = #4ee8c4
 color: gold = #f5c468
 color: pink = #e84898
-font: /home/stephan/Development/Archiv/Hiro/public/fonts/ibm-plex-sans-v9-latin-700.woff2
+font: diagrams/ibm-plex-sans-700.woff2
 background: transparent
 arrow-color: #666
 ---
