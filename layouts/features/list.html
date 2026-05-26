@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  {{ partial "head.html" . }}
+  <body>
+    {{ partial "header.html" (dict "Page" . "alwaysVisible" true) }}
+
+    <div class="docs-layout">
+      {{ partial "features-sidebar.html" . }}
+      <div class="docs-sidebar-overlay" id="docs-sidebar-overlay"></div>
+
+      <main class="docs-content">
+        <h1>{{ .Title }}</h1>
+        {{ .Content }}
+
+      </main>
+    </div>
+
+    <button class="docs-hamburger" id="docs-hamburger" aria-label="Toggle sidebar">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+
+    {{ partial "footer.html" . }}
+
+    <script>
+      (function() {
+        const hamburger = document.getElementById('docs-hamburger');
+        const sidebar = document.getElementById('docs-sidebar');
+        const overlay = document.getElementById('docs-sidebar-overlay');
+        if (!hamburger || !sidebar) return;
+        function toggle() {
+          sidebar.classList.toggle('open');
+          overlay.classList.toggle('open');
+        }
+        hamburger.addEventListener('click', toggle);
+        overlay.addEventListener('click', toggle);
+      })();
+    </script>
+
+    <script>
+      fetch("{{ .Site.Params.githubAPI }}")
+        .then(res => res.json())
+        .then(data => {
+          if (data.stargazers_count !== undefined) {
+            const el = document.getElementById("star-count-nav");
+            if (el) el.textContent = data.stargazers_count;
+          }
+        })
+        .catch(() => {});
+    </script>
+    <!-- 100% privacy-first analytics -->
+    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+  </body>
+</html>

@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  {{ partial "head.html" . }}
+  <body>
+    <style>
+      .articles-list {
+        max-width: 760px;
+        margin-inline: auto;
+        padding-block: 6rem 4rem;
+        padding-inline: 1.5rem;
+      }
+
+      .articles-list h1 {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: var(--white);
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        margin-block-end: 0.5rem;
+      }
+
+      .articles-list .articles-intro {
+        color: var(--text-dim);
+        font-size: 1.1rem;
+        line-height: 1.65;
+        margin-block-end: 3rem;
+        padding-block-end: 2rem;
+        border-block-end: 1px solid var(--border);
+      }
+
+      .articles-grid {
+        display: grid;
+        gap: 2rem;
+      }
+
+      .article-topic {
+        margin-block-end: 3.5rem;
+      }
+
+      .article-topic-heading {
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--teal);
+        margin-block-end: 1.5rem;
+        padding-block-end: 0.75rem;
+        border-block-end: 1px solid var(--border);
+      }
+
+      .article-entry {
+        padding-block: 0.5rem;
+      }
+
+      .article-entry h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-block-end: 0.4rem;
+        line-height: 1.25;
+      }
+
+      .article-entry h3 a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .article-entry h3 a:hover {
+        color: var(--teal);
+      }
+
+      .article-meta {
+        font-size: 0.9rem;
+        color: var(--text-dim);
+        margin-block-end: 0.6rem;
+      }
+
+      .article-excerpt {
+        color: #ccc;
+        font-size: 1.05rem;
+        line-height: 1.65;
+      }
+
+      .articles-empty {
+        color: var(--text-dim);
+        font-size: 1.05rem;
+        padding-block: 2rem;
+        text-align: center;
+        border: 1px dashed var(--border);
+        border-radius: 8px;
+      }
+
+      .articles-empty code {
+        color: var(--teal);
+        font-family: var(--font-mono);
+      }
+
+      @media (max-width: 600px) {
+        .articles-list h1 {
+          font-size: 1.8rem;
+        }
+        .article-entry h3 {
+          font-size: 1.25rem;
+        }
+      }
+    </style>
+
+    {{ partial "header.html" (dict "Page" . "alwaysVisible" true) }}
+
+    <main class="articles-list">
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.description }}
+      <p class="articles-intro">{{ . }}</p>
+      {{ end }}
+
+      {{ $posts := where .Pages "Section" "articles" }}
+      {{ if $posts }}
+      {{ range $posts.GroupByParam "topic" }}
+      <section class="article-topic">
+        <h2 class="article-topic-heading">{{ .Key }}</h2>
+        <div class="articles-grid">
+          {{ range .Pages.ByDate.Reverse }}
+          <article class="article-entry">
+            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+            <p class="article-meta">
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+              {{ with .Params.author }} &middot; {{ . }}{{ end }}
+            </p>
+            {{ with .Params.description }}
+            <p class="article-excerpt">{{ . }}</p>
+            {{ end }}
+          </article>
+          {{ end }}
+        </div>
+      </section>
+      {{ end }}
+      {{ else }}
+      <div class="articles-empty">
+        Nothing published yet.
+      </div>
+      {{ end }}
+    </main>
+
+    {{ partial "footer.html" . }}
+
+    <script>
+      fetch("{{ .Site.Params.githubAPI }}")
+        .then(res => res.json())
+        .then(data => {
+          if (data.stargazers_count !== undefined) {
+            const el = document.getElementById("star-count-nav");
+            if (el) el.textContent = data.stargazers_count;
+          }
+        })
+        .catch(() => {});
+    </script>
+    <!-- 100% privacy-first analytics -->
+    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+  </body>
+</html>

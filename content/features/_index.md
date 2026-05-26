@@ -1,0 +1,64 @@
+---
+title: Features
+weight: 1
+---
+
+- **[Jira connector](/features/connectors/)** — read, create, edit, and comment on Jira Cloud and Server issues from the CLI
+- **[GitHub Issues connector](/features/connectors/)** — list, create, edit, and comment on GitHub Issues and Projects
+- **[GitLab Issues connector](/features/connectors/)** — list, create, edit, and comment on GitLab Issues
+- **[Linear connector](/features/connectors/)** — list, create, edit, and comment on Linear issues and projects
+- **[Azure DevOps connector](/features/connectors/)** — list, create, edit, and comment on Azure Boards work items
+- **[Shortcut connector](/features/connectors/)** — list, create, edit, and comment on Shortcut stories
+- **[ClickUp connector](/features/connectors/)** — list, create, edit, and comment on ClickUp tasks
+- **[Notion connector](/features/connectors/)** — search workspace, read pages, query databases
+- **[Figma connector](/features/connectors/)** — read files, components, comments, and export images
+- **[Amplitude connector](/features/connectors/)** — query events, funnels, retention, cohorts, and user activity
+- **[Sentry connector](/features/connectors/)** — read error tracking issues and events
+- **[Telegram connector](/features/telegram/)** — read, process, and acknowledge Telegram bot messages as a task inbox for your AI agent
+- **[Slack connector](/features/connectors/)** — send notifications and read messages from configured channels
+- **Unified command interface** — all issue trackers share the same CLI commands: `list`, `get`, `create`, `edit`, `start`, `delete`, `comment`, `status`
+- **[95% fewer tokens than MCP servers](/features/connectors/)** — human extracts signal and discards noise, so the same Jira tickets that cost 5,781 tokens via raw API cost 267 through human
+- **Credentials never touch the AI** — API tokens are stored on your machine and used by the CLI; Claude Code never sees them
+- **Quick commands** — `human get KAN-1` and `human list --project=KAN` auto-detect your tracker, no tracker prefix needed
+- **[Cross-tracker search](/features/connectors/)** — `human search` queries a local SQLite FTS5 index built from all connected trackers and Notion
+- **Search index** — `human index` builds and syncs a local full-text search index across all your tools
+- **[/human-ideate](/features/skills/)** — challenge a rough idea with 5 forcing questions, then create a PM ticket in your tracker
+- **[/human-sprint](/features/skills/)** — run the full pipeline in one command: ideate, plan, execute, review
+- **[/human-ready](/features/skills/)** — evaluate a ticket against a Definition of Ready checklist before implementation starts
+- **[/human-brainstorm](/features/skills/)** — explore implementation approaches and surface alternatives you might not have considered
+- **[/human-plan](/features/skills/)** — fetch a ticket, explore the codebase, and produce a structured implementation plan
+- **[/human-execute](/features/skills/)** — load a plan and execute it step by step with a review checkpoint at the end
+- **[/human-review](/features/skills/)** — review the current branch's changes against the ticket's acceptance criteria
+- **[/human-done](/features/skills/)** — evaluate whether the implementation is complete and shippable
+- **[/human-bug-plan](/features/skills/)** — analyze a bug ticket for root cause and produce a fix plan
+- **[/human-findbugs](/features/skills/)** — scan the codebase for logic errors, race conditions, and security issues with a multi-agent pipeline
+- **[/human-security](/features/skills/)** — deep security audit with attack surface mapping, OWASP Top 10 scanning, and attack chain analysis
+- **[/human-gardening](/features/skills/)** — analyze structural debt, duplication, and complexity hotspots with a health scorecard
+- **Structured output in .human/** — all skill reports are markdown files saved to `.human/` and tracked in git for auditability
+- **Skill chaining** — output from one skill feeds the next; `/human-plan` output is consumed by `/human-execute`
+- **Works with any issue tracker** — skills auto-fetch tickets from whichever tracker you've configured
+- **[Chrome Bridge](/features/chrome-bridge-devcontainer/)** — use `claude --chrome` inside devcontainers by tunneling Chrome DevTools Protocol to the host
+- **[MCP/OAuth in devcontainers](/features/mcp-oauth-devcontainer/)** — browser-based OAuth flows from inside containers just work, including Claude Code subscription linking
+- **[Firewall & HTTPS proxy](/features/firewall-proxy-devcontainer/)** — allowlist or blocklist domains for AI agent outbound network access using SNI-based filtering
+- **[.env secret protection](/features/env-filter-devcontainer/)** — host-side FUSE filesystem filters .env files so AI agents see they exist but can never read the secrets inside
+- **[Open URLs from devcontainers](/features/open-urls-devcontainer/)** — `human-browser` replaces `$BROWSER` inside containers and opens URLs on your host machine
+- **Daemon mode** — `human daemon start` runs a background daemon that forwards CLI commands, credentials, and browser access from containers to the host
+- **Daemon token auth** — token-based authentication ensures only authorized containers can communicate with the daemon
+- **[Live TUI dashboard](/features/usage/)** — `human tui` shows token usage, running Claude Code instances, busy/ready state, and tracker issues in a live terminal UI
+- **Per-model token breakdown** — token usage is broken down by model family and version with per-instance bars
+- **5-hour billing window tracking** — automatically selects the current Claude Code billing window and shows what counts against your limit
+- **Auto-discovery of Claude Code instances** — finds every running instance on the host and inside Docker containers without configuration
+- **Subagent visibility** — busy instances show their running subagents with agent name, type, and elapsed time
+- **Tracker pipeline state** — the TUI shows open issues with pipeline state: Ready for Plan, Planning, Planned, Backlog, In Dev, Done
+- **Policy-based operation control** — block or require confirmation for specific operations like `delete`, `assign`, or `transition:Done` in `.humanconfig.yaml`
+- **Safe mode** — `--safe` flag blocks all destructive operations
+- **Multiple output formats** — JSON (default), markdown, and human-readable tables via `--table`
+- **Multiple named instances per tracker** — configure separate Jira instances for different teams or projects
+- **Flexible credential resolution** — tokens resolve from CLI flags, per-instance env vars, global env vars, or config file
+- **Devcontainer feature** — one-line install via `ghcr.io/stephanschmidt/treehouse/human:1` in `devcontainer.json`
+- **`human init`** — interactive setup wizard for trackers, connectors, and daemon configuration
+- **`human install --agent claude`** — install all skills to `.claude/skills/` in one command
+- **Allowed Telegram users** — restrict which Telegram users the bot listens to by user ID
+- **Docker container auto-discovery** — the TUI and daemon detect Claude Code running inside Docker containers via the Docker API
+- **No MITM proxy** — the HTTPS firewall reads SNI only, no certificate installation, no traffic decryption, data stays encrypted end-to-end
+- **Defense in depth** — credential isolation, .env filtering, and network firewalling combine for three layers of AI agent security

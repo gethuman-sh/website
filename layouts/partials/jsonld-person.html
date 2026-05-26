@@ -1,0 +1,9 @@
+{{- /* Canonical Person entity for the site author, shared across all JSON-LD via a stable @id. */ -}}
+{{- $a := .Site.Params.author -}}
+{{- dict
+  "@type" "Person"
+  "@id" (printf "%s#person-stephan-schmidt" .Site.BaseURL)
+  "name" $a.name
+  "url" $a.url
+  "sameAs" $a.sameAs
+| jsonify -}}

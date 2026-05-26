@@ -1,0 +1,19 @@
+---
+color: teal = #4ee8c4
+color: gold = #f5c468
+color: pink = #e84898
+font: /home/stephan/Development/Archiv/Hiro/public/fonts/ibm-plex-sans-v9-latin-700.woff2
+background: transparent
+arrow-color: #666
+---
+PM: 1,1: PM Ticket, gold
+AI: >+2,0: AI, teal
+DEV: >+2,0: Dev Ticket, pink
+AI2: >0,+1: AI Coder, teal
+Code: >-2,0: Code, pink
+Verify: >-2,0: AI Verify, teal
+Bug: >0,+1: Bug Ticket, gold
+
+Verify -> PM
+AI -> PM
+Verify -> Bug

@@ -1,0 +1,20 @@
+{{ $currentPage := . }}
+{{ $docsSection := site.GetPage "docs" }}
+{{ if $docsSection }}
+<nav class="docs-sidebar" id="docs-sidebar">
+  <ul class="docs-sidebar-list">
+    <li><a href="{{ $docsSection.Permalink }}"{{ if eq $currentPage.RelPermalink $docsSection.RelPermalink }} class="active"{{ end }}>Overview</a></li>
+  </ul>
+
+  {{ range $docsSection.Sections.ByWeight }}
+  <div class="docs-sidebar-section">
+    <div class="docs-sidebar-heading">{{ .Title }}</div>
+    <ul class="docs-sidebar-list">
+      {{ range .Pages.ByWeight }}
+      <li><a href="{{ .Permalink }}"{{ if eq $currentPage.RelPermalink .RelPermalink }} class="active"{{ end }}>{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+  </div>
+  {{ end }}
+</nav>
+{{ end }}

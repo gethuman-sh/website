@@ -1,0 +1,26 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Hugo output
+public/
+.hugo_build.lock
+
+# Generated diagrams
+static/human-loop.svg
+static/skills.svg
+
+# Local Claude Code / internal files — never commit to the public repo.
+# (no-slash patterns match in every directory; trailing-slash patterns match dirs anywhere)
+.claude/
+.human/
+CLAUDE.md
+settings.local.json
+comparison_jai_website.md

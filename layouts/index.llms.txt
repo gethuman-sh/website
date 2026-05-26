@@ -1,0 +1,18 @@
+{{- /* llms.txt — curated, machine-readable index for AI crawlers (llmstxt.org). Regenerated on every build. */ -}}
+# human — The Dark Software Factory for Claude Code
+
+> {{ .Site.Params.description }}
+
+human is a CLI harness for running a "dark software factory" on a codebase: AI agents pick up tickets and write, test, and ship code while humans stay on intent, policy, and outcome review. It connects issue trackers and tools (Jira, GitHub, Linear, Notion, Figma, Amplitude, Sentry) with roughly 95% fewer tokens than MCP servers, and ships a secure devcontainer, Chrome Bridge, and lifecycle skills.
+
+Author: {{ .Site.Params.author.name }} — creator of human and author of the writing below on the dark software factory and AI-first software development. {{ .Site.Params.author.url }}
+{{ $articles := where .Site.RegularPages "Section" "articles" }}
+{{- range $articles.GroupByParam "topic" }}
+## {{ .Key }}
+{{ range .Pages.ByDate.Reverse }}
+- [{{ .Title }}]({{ .Permalink }}): {{ with .Params.description }}{{ . }}{{ end }}
+{{- end }}
+{{ end }}
+## Product
+- [Documentation]({{ .Site.BaseURL }}docs/): install, configuration, connectors, skills, policies.
+- [Features]({{ .Site.BaseURL }}features/): devcontainer, Chrome Bridge, connectors, skills, Telegram, usage.

@@ -1,0 +1,1238 @@
+<!doctype html>
+<html lang="en">
+  {{ partial "head.html" . }}
+  <body>
+    {{ partial "header.html" (dict "Page" . "alwaysVisible" false "homepage"
+    true) }}
+    <section class="hero">
+      <img src="h-l2.svg" alt="human - the dark software factory for Claude Code" />
+      <h1>Your Dark Software Factory.</h1>
+      <p class="eyebrow">You have the idea. Claude builds and ships it.</p>
+      <p class="tagline">
+        human is an open-source CLI that runs Claude Code inside a secure devcontainer, wired into your tracker, docs, designs, and analytics.
+        One command takes a ticket from idea to shipped code. You review the outcome, not every diff.
+      </p>
+      <div class="trackers">
+        <img src="jira.svg" alt="Jira" />
+        <img src="github.svg" alt="GitHub" />
+        <img src="gitlab.svg" alt="GitLab" />
+        <img src="linear.svg" alt="Linear" />
+        <img src="azuredevops.svg" alt="Azure DevOps" />
+        <img src="shortcut.svg" alt="Shortcut" />
+        <img src="clickup.svg" alt="ClickUp" />
+        <img src="notion.svg" alt="Notion" />
+        <img src="figma.svg" alt="Figma" />
+        <img src="amplitude.svg" alt="Amplitude" />
+        <img src="sentry.svg" alt="Sentry" />
+        <img src="telegram.svg" alt="Telegram" />
+      </div>
+      <div class="install-steps">
+        <div
+          class="install"
+          data-copy="curl -sSfL gethuman.sh/install.sh | bash"
+        >
+          curl -sSfL gethuman.sh/install.sh | bash
+        </div>
+        <div class="install" data-copy="human init">human init</div>
+      </div>
+      
+    </section>
+
+    <section class="pillars">
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <h3>The Control Room</h3>
+          <div class="pillar-img">
+            <img src="human-tui.png" alt="human TUI dashboard showing Claude Code token usage and tracker issues" />
+          </div>
+          <p>
+            Monitor running agents, token usage, tracker issues, and
+            pipeline state in real time. One view for everything.
+          </p>
+        </div>
+        <div class="pillar-card">
+          <h3>The Fence</h3>
+          <div class="pillar-img">
+            <img src="architecture.svg" alt="Secure devcontainer architecture for Claude Code with daemon, firewall, and Chrome Bridge" />
+          </div>
+          <p>
+            Just works. OAuth, Claude subscriptions, MCP, browser access,
+            Chrome Bridge, firewall &mdash; all configured out of the box.
+          </p>
+        </div>
+        <div class="pillar-card">
+          <h3>Intent In</h3>
+          <div class="pillar-img context-visual">
+            <div class="context-logos">
+              <img src="jira.svg" alt="Jira" />
+              <img src="github.svg" alt="GitHub" />
+              <img src="linear.svg" alt="Linear" />
+              <img src="notion.svg" alt="Notion" />
+              <img src="figma.svg" alt="Figma" />
+              <img src="amplitude.svg" alt="Amplitude" />
+              <img src="sentry.svg" alt="Sentry" />
+              <img src="shortcut.svg" alt="Shortcut" />
+              <img src="clickup.svg" alt="ClickUp" />
+            </div>
+            <span class="context-label">Cross Context Search</span>
+          </div>
+          <p>
+            Connectors for every source. Cross-tracker and Notion search,
+            local fast index. Your AI sees everything it needs.
+          </p>
+        </div>
+        <div class="pillar-card">
+          <h3>Outcome Review</h3>
+          <div class="pillar-img">
+            <img src="skills.svg" alt="Claude Code lifecycle skills: ideate, plan, execute, review" />
+          </div>
+          <p>
+            Ideate, plan, execute, review. One command runs the full
+            pipeline from rough idea to shipped code.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark-factory-explainer" style="max-width: 860px">
+      <h2>What is a dark software factory?</h2>
+      <p class="section-subtitle">
+        In manufacturing, a dark factory runs with the lights off &mdash; the
+        machines don&rsquo;t need them. In software, it&rsquo;s the same idea:
+        AI agents write the code, test it against scenarios they&rsquo;ve never
+        seen, and ship it. No one reviews diffs line by line.
+      </p>
+      <p class="section-subtitle">
+        But the lights aren&rsquo;t off everywhere. Someone still has to define
+        what to build, feed the factory real context, set the policies, and
+        decide when an outcome is good enough. That work stays human.
+      </p>
+      <p class="section-subtitle">
+        That&rsquo;s what human is. It&rsquo;s the part of the dark factory
+        where people belong:
+      </p>
+      <ul class="dark-factory-list">
+        <li>
+          <strong>Intent in.</strong> Tickets, docs, designs, analytics &mdash;
+          the real context Claude needs to build the right thing, not just any
+          thing.
+        </li>
+        <li>
+          <strong>Policy around the line.</strong> Secure devcontainer,
+          credential isolation, outbound allowlists, full audit trail. The
+          factory runs, but only inside the fence you drew.
+        </li>
+        <li>
+          <strong>Review on outcomes, not diffs.</strong> Skills for ideation,
+          planning, execution, and review. You approve what shipped, not every
+          line that led there.
+        </li>
+      </ul>
+      <p class="section-subtitle" style="margin-top: 1.5rem">
+        Claude runs the line. You stay on intent. The factory handles the rest.
+      </p>
+      <p class="section-subtitle" style="margin-top: 1rem">
+        For the full story &mdash; origin, five levels, StrongDM example, critiques &mdash; read
+        <a href="/dark-software-factory/" style="color: #4ee8c4; text-decoration: none; border-bottom: 1px solid rgba(78, 232, 196, 0.4);">What is a Dark Software Factory?</a>
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Install human on macOS, Linux, or with Go</h2>
+      <div class="window">
+        <div class="window-bar">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+        </div>
+        <pre><code><span class="comment">## Brew</span>
+<span class="cmd">brew install</span> stephanschmidt/tap/human
+
+<span class="comment">## mise</span>
+<span class="cmd">mise use</span> -g github:StephanSchmidt/human
+
+<span class="comment">## Go</span>
+<span class="cmd">go install</span> github.com/stephanschmidt/human@latest</code></pre>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Secure devcontainer for Claude Code</h2>
+      <p class="section-subtitle">
+        One command sets up a fully secured devcontainer with daemon, Chrome proxy, firewall, and Claude Code integration.
+      </p>
+      <div class="window">
+        <div class="window-bar">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+        </div>
+        <pre><code><span class="cmd">human</span> init
+<span class="comment"># Configure services, generate devcontainer.json, install Claude Code skills</span>
+
+<span class="cmd">human</span> daemon start
+<span class="cmd">devcontainer</span> up <span class="flag">--workspace-folder</span> .</code></pre>
+      </div>
+    </section>
+
+    <section
+      class="section architecture-section"
+      style="text-align: center; max-width: 960px"
+    >
+      <h2>How human works with Claude Code</h2>
+      <p class="section-subtitle">
+        human can be used as a standalone CLI with any Coding agent to easily
+        connect to Jira, Linear, Github and other data sources. It is much more
+        powerful when used with a devcontainer, where it connects to an outside
+        human server (same binary) to connect to those data sources, act as a
+        firewall/proxy and lets Claude Code connect to Chrome from inside the
+        container.
+      </p>
+      <img
+        src="architecture.svg"
+        alt="human architecture diagram - Claude Code devcontainer with daemon, Chrome Bridge, and HTTPS proxy"
+        class="architecture-diagram"
+      />
+    </section>
+
+    <section class="batteries">
+      <h2>Every connector Claude Code needs, included</h2>
+      <div class="batteries-grid">
+        <div class="battery-card">
+          <div class="card-logos">
+            <img src="jira.svg" alt="Jira" />
+            <img src="github.svg" alt="GitHub" />
+            <img src="gitlab.svg" alt="GitLab" />
+            <img src="linear.svg" alt="Linear" />
+            <img src="azuredevops.svg" alt="Azure DevOps" />
+            <img src="shortcut.svg" alt="Shortcut" />
+            <img src="clickup.svg" alt="ClickUp" />
+          </div>
+          <h3>Issue Trackers</h3>
+          <p>
+            <a href="/features/connectors/">Claude Code Jira, GitHub, GitLab, Linear, Azure DevOps, Shortcut, and ClickUp integrations</a>.
+            One CLI, same commands.
+          </p>
+        </div>
+        <div class="battery-card">
+          <div class="card-logos">
+            <img src="notion.svg" alt="Notion" />
+            <img src="clickup.svg" alt="ClickUp" />
+          </div>
+          <h3>Docs &amp; Knowledge</h3>
+          <p>
+            <a href="/features/connectors/">Claude Code Notion and ClickUp Docs integration</a>.
+            Search, page reading, databases, wikis. Your AI reads your docs.
+          </p>
+        </div>
+        <div class="battery-card">
+          <div class="card-logos">
+            <img src="figma.svg" alt="Figma" />
+          </div>
+          <h3>Design</h3>
+          <p>
+            <a href="/features/connectors/">Claude Code Figma integration</a>.
+            Files, components, comments, export. Design-to-code without
+            screenshots.
+          </p>
+        </div>
+        <div class="battery-card">
+          <div class="card-logos">
+            <img src="amplitude.svg" alt="Amplitude" />
+            <img src="sentry.svg" alt="Sentry" />
+          </div>
+          <h3>Analytics</h3>
+          <p>
+            <a href="/features/connectors/">Claude Code Amplitude and Sentry integration</a>.
+            Events, funnels, retention, cohorts. Error tracking and issue triage.
+          </p>
+        </div>
+        <div class="battery-card">
+          <div class="card-logos">
+            <img src="telegram.svg" alt="Telegram" />
+          </div>
+          <h3>Messaging</h3>
+          <p>
+            <a href="/features/telegram/">Telegram bot messages as a Claude Code task inbox</a>.
+            Poll, process, and acknowledge &mdash; your AI agent handles user requests end to end.
+          </p>
+        </div>
+        <div class="battery-card">
+          <div class="card-icon icon-container icon-pink">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6z"
+              />
+            </svg>
+          </div>
+          <h3>Lifecycle Skills</h3>
+          <p>
+            <a href="/features/skills/">Built-in Claude Code skills</a> for
+            the full lifecycle: /human-ready, /human-plan, /human-execute,
+            /human-review, /human-bug-plan, /human-findbugs, /human-security.
+          </p>
+        </div>
+        <div class="battery-card">
+          <div class="card-icon icon-container icon-gold">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+          </div>
+          <h3>Token Optimization</h3>
+          <p>
+            95% fewer Claude Code tokens vs raw APIs and MCP servers &mdash;
+            stay under your daily limit.
+          </p>
+        </div>
+        <div class="battery-card">
+          <div class="card-icon icon-container icon-teal">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              <path d="M9 12l2 2 4-4" />
+            </svg>
+          </div>
+          <h3>Credentials</h3>
+          <p>
+            <a href="/features/env-filter-devcontainer/">.env secret protection for AI agents</a>.
+            Stored on the machine, never touch the AI.
+          </p>
+        </div>
+        <div class="battery-card">
+          <div class="card-icon icon-container icon-gold">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+              <line x1="8" y1="21" x2="16" y2="21" />
+              <line x1="12" y1="17" x2="12" y2="21" />
+            </svg>
+          </div>
+          <h3>Devcontainers</h3>
+          <p>
+            <a href="/features/firewall-proxy-devcontainer/">HTTPS proxy and firewall for Claude Code in devcontainers</a>.
+            Daemon mode, transparent forwarding, outbound traffic control.
+          </p>
+        </div>
+        <div class="battery-card">
+          <div class="card-icon icon-container icon-teal">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <circle cx="12" cy="12" r="4" />
+              <line x1="21.17" y1="8" x2="12" y2="8" />
+              <line x1="3.95" y1="6.06" x2="8.54" y2="14" />
+              <line x1="10.88" y1="21.94" x2="15.46" y2="14" />
+            </svg>
+          </div>
+          <h3>Chrome Bridge</h3>
+          <p>
+            <a href="/features/chrome-bridge-devcontainer/">Use Chrome inside a devcontainer with Claude Code</a>.
+            Your AI agent can browse and inspect &mdash; even in a container.
+          </p>
+        </div>
+        <div class="battery-card">
+          <div class="card-icon icon-container icon-pink">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <h3>MCP/OAuth in Containers</h3>
+          <p>
+            <a href="/features/mcp-oauth-devcontainer/">MCP OAuth authentication in devcontainers</a>.
+            The daemon proxies MCP authentication to the host browser &mdash;
+            no workarounds needed.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="stop-assembling">
+      <h2>The factory is engineered, not improvised.</h2>
+      <p class="section-subtitle">
+        One install gives your AI agent superpowers across your entire
+        toolchain.
+      </p>
+
+      <div class="pain-grid">
+        <div class="pain-card">
+          <span class="pain-icon">&#x26A1;</span>
+          <h4>One-command setup</h4>
+          <p>
+            <code>human init</code> &mdash; one command configures every
+            connector, every project, every developer.
+          </p>
+        </div>
+        <div class="pain-card">
+          <span class="pain-icon">&#x1F465;</span>
+          <h4>Same setup, every dev</h4>
+          <p>
+            No more &ldquo;works on my machine.&rdquo; Every developer gets
+            identical connectors, skills, and config from day one.
+          </p>
+        </div>
+        <div class="pain-card">
+          <span class="pain-icon">&#x1F504;</span>
+          <h4>Always up to date</h4>
+          <p>
+            We track API changes so you don&rsquo;t. Update human, and every
+            connector updates with it.
+          </p>
+        </div>
+        <div class="pain-card">
+          <span class="pain-icon">&#x1F9E9;</span>
+          <h4>No version conflicts</h4>
+          <p>
+            Every connector is tested together. No broken combinations, no
+            dependency hell, no surprises after upgrades.
+          </p>
+        </div>
+        <div class="pain-card">
+          <span class="pain-icon">&#x1F4E6;</span>
+          <h4>Nothing to assemble</h4>
+          <p>
+            No MCP hunting, no README roulette, no stitching tools together. The
+            framework ships complete.
+          </p>
+        </div>
+        <div class="pain-card">
+          <span class="pain-icon">&#x23F1;&#xFE0F;</span>
+          <h4>Onboard in minutes</h4>
+          <p>
+            New team member? One install, one init. They&rsquo;re shipping with
+            full toolchain access before lunch.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="rails-callout">
+      <strong>human is where the humans belong in a dark factory.</strong>
+      <p>
+        Intent in. Outcomes reviewed. The line runs between.<br />
+        Stop assembling your stack. Start specifying the work.
+      </p>
+
+      <div class="without-with">
+        <div class="without-with-col">
+          <h3 class="without-label">WITHOUT HUMAN</h3>
+          <ul>
+            <li>Find &amp; vet each MCP server</li>
+            <li>Configure each separately</li>
+            <li>Manage 9 sets of credentials</li>
+            <li>Hope it works in devcontainers</li>
+            <li>No Chrome access inside containers</li>
+            <li>Blow your context window</li>
+            <li>Build planning workflows yourself</li>
+            <li>Track every ecosystem change</li>
+          </ul>
+        </div>
+        <div class="without-with-col with-col">
+          <h3 class="with-label">WITH HUMAN</h3>
+          <ul>
+            <li>All integrations included</li>
+            <li><code>human init</code> &mdash; one command setup</li>
+            <li>One credential system</li>
+            <li>Daemon mode, just works</li>
+            <li>Chrome Bridge &mdash; browse from containers</li>
+            <li>95% fewer tokens</li>
+            <li>Full lifecycle skills built in</li>
+            <li>We handle the updates</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section replaces">
+      <h2>Replaces these CLIs</h2>
+      <p class="replaces-list">
+        Jira CLI &middot; GitHub CLI &middot; GitLab CLI &middot; Linear CLI &middot; ClickUp CLI &middot; Shortcut CLI &middot; Azure DevOps CLI &middot; Notion CLI &middot; Sentry CLI
+      </p>
+    </section>
+
+    <section class="section">
+      <div class="context-window-header">
+        <h2>Stop burning Claude Code tokens on MCP servers</h2>
+        <p>
+          MCP servers dump raw API responses into your context. human extracts
+          signal, discards noise. Stop hitting your daily token limit by lunch.
+        </p>
+      </div>
+
+      <div class="signal-noise">
+        <div class="noise-side">
+          <div class="side-label">RAW API / UI (High Token Cost)</div>
+          <div class="mock-jira">
+            <div class="jira-header"></div>
+            <div class="jira-body">
+              <div class="jira-sidebar">
+                <div class="jira-line" style="width: 60%"></div>
+                <div class="jira-line" style="width: 40%"></div>
+                <div class="jira-line" style="width: 50%"></div>
+              </div>
+              <div class="jira-content">
+                <div class="jira-line" style="width: 30%; height: 20px"></div>
+                <div class="jira-line" style="width: 90%"></div>
+                <div class="jira-line" style="width: 85%"></div>
+                <div
+                  class="jira-line"
+                  style="width: 40%; height: 40px; margin-top: 10px"
+                ></div>
+                <div class="jira-metadata">
+                  <code>"customfield_1001": null,</code><br />
+                  <code>"expand": "operations,version",</code><br />
+                  <code>"self": "https://jira.com/...",</code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="arrow-container">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#4ee8c4"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 12h14" />
+            <path d="M12 5l7 7-7 7" />
+          </svg>
+        </div>
+
+        <div class="signal-side">
+          <div class="side-label" style="color: #4ee8c4">
+            HUMAN (High Signal)
+          </div>
+          <div class="window" style="margin-bottom: 0">
+            <div class="window-bar">
+              <div class="dot red"></div>
+              <div class="dot yellow"></div>
+              <div class="dot green"></div>
+            </div>
+            <pre
+              style="padding: 1rem; font-size: 0.8rem"
+            ><code><span class="cmd">Title:</span> Implement SSO
+<span class="cmd">Status:</span> To Do
+<span class="cmd">AC:</span>
+- Works with SAML
+- Login redirect ok
+- Error handling</code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="comparison-footer">
+        <p>Measured with <code>ttok</code> &mdash; 3 Jira tickets, same data</p>
+        <div class="comparison-container">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Format</th>
+                <th>Tokens</th>
+                <th>Savings</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Jira API response</td>
+                <td>5,781</td>
+                <td>&mdash;</td>
+              </tr>
+              <tr>
+                <td><code>human</code> JSON</td>
+                <td class="highlight">267</td>
+                <td class="highlight">95%</td>
+              </tr>
+              <tr>
+                <td>Table format (<code>--table</code>)</td>
+                <td class="highlight">82</td>
+                <td class="highlight">98%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>human CLI usage examples</h2>
+      <div class="window">
+        <div class="window-bar">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+        </div>
+        <pre><code><span class="comment"># List issues (JSON by default)</span>
+<span class="cmd">human</span> jira issues list <span class="flag">--project</span>=<span class="str">KAN</span>                 <span class="comment"># Jira</span>
+<span class="cmd">human</span> github issues list <span class="flag">--project</span>=<span class="str">octocat/hello-world</span> <span class="comment"># GitHub</span>
+<span class="cmd">human</span> gitlab issues list <span class="flag">--project</span>=<span class="str">mygroup/myproject</span>   <span class="comment"># GitLab</span>
+<span class="cmd">human</span> linear issues list <span class="flag">--project</span>=<span class="str">ENG</span>                 <span class="comment"># Linear</span>
+<span class="cmd">human</span> azuredevops issues list <span class="flag">--project</span>=<span class="str">Human</span>          <span class="comment"># Azure DevOps</span>
+<span class="cmd">human</span> shortcut issues list <span class="flag">--project</span>=<span class="str">MyProject</span>        <span class="comment"># Shortcut</span>
+<span class="cmd">human</span> clickup issues list <span class="flag">--project</span>=<span class="str">901234567</span>         <span class="comment"># ClickUp</span>
+
+<span class="comment"># Get a single issue as markdown</span>
+<span class="cmd">human</span> jira issue get <span class="str">KAN-1</span>
+
+<span class="comment"># Create an issue</span>
+<span class="cmd">human</span> linear issue create <span class="flag">--project</span>=<span class="str">ENG</span> <span class="str">"Implement feature"</span>
+
+<span class="comment"># Add a comment</span>
+<span class="cmd">human</span> jira issue comment add <span class="str">KAN-1</span> <span class="str">"This is done"</span>
+
+<span class="comment"># Notion &mdash; search workspace, read pages</span>
+<span class="cmd">human</span> notion search <span class="str">"quarterly report"</span>
+<span class="cmd">human</span> notion page get <span class="str">&lt;page-id&gt;</span>
+
+<span class="comment"># Figma &mdash; browse files, inspect designs</span>
+<span class="cmd">human</span> figma file get <span class="str">&lt;file-key&gt;</span>
+<span class="cmd">human</span> figma file comments <span class="str">&lt;file-key&gt;</span>
+<span class="cmd">human</span> figma file components <span class="str">&lt;file-key&gt;</span>
+
+<span class="comment"># Amplitude &mdash; product analytics</span>
+<span class="cmd">human</span> amplitude events list
+<span class="cmd">human</span> amplitude cohorts list
+
+<span class="comment"># Sentry &mdash; error tracking</span>
+<span class="cmd">human</span> sentry issues list <span class="flag">--project</span>=<span class="str">your-project</span>
+<span class="cmd">human</span> sentry issue get <span class="str">12345</span></code></pre>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Claude Code skills for the full development lifecycle</h2>
+      <p
+        style="
+          color: #aaa;
+          font-size: 1.05rem;
+          line-height: 1.7;
+          margin-bottom: 2rem;
+        "
+      >
+        AI writes code. But who decides <em>what</em> gets built? human&rsquo;s
+        built-in skills cover the full lifecycle &mdash; from challenging the
+        idea through planning, execution, review, and verification.
+        One command (<code>/human-sprint</code>) runs the entire pipeline.
+      </p>
+      <div class="window">
+        <div class="window-bar">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+        </div>
+        <pre><code><span class="comment"># Included in human init, or run separately:</span>
+<span class="cmd">human</span> install <span class="flag">--agent</span> <span class="str">claude</span></code></pre>
+      </div>
+      <img
+        src="skills.svg"
+        alt="Claude Code skills flow: /human-ideate to /human-plan to /human-execute to /human-review"
+        class="skills-diagram"
+      />
+      <div class="skills">
+        <div class="skill">
+          <h3>/human-ideate</h3>
+          <p>
+            Challenges your idea with forcing questions, refines the scope,
+            and creates a ready PM ticket in your chosen tracker. The creation
+            process ensures quality &mdash; no separate readiness check needed.
+          </p>
+        </div>
+        <div class="skill">
+          <h3>/human-sprint</h3>
+          <p>
+            One command from rough idea to shipped code. Chains ideate, plan,
+            execute, and review. Auto-decides mechanical questions, surfaces
+            only genuine taste decisions.
+          </p>
+        </div>
+        <div class="skill">
+          <h3>/human-plan</h3>
+          <p>
+            Fetches a ticket, explores the codebase, and produces a structured
+            implementation plan saved to <code>.human/plans/</code>.
+          </p>
+        </div>
+        <div class="skill">
+          <h3>/human-execute</h3>
+          <p>
+            Loads a plan from <code>.human/plans/</code>, executes it step by
+            step, then runs a review checkpoint to verify the result.
+          </p>
+        </div>
+        <div class="skill">
+          <h3>/human-review</h3>
+          <p>
+            Reviews the current branch&rsquo;s changes against the
+            ticket&rsquo;s acceptance criteria. Flags gaps, scope creep, and
+            missing edge cases. Saved to <code>.human/reviews/</code>.
+          </p>
+        </div>
+        <div class="skill">
+          <h3>/human-bug-plan</h3>
+          <p>
+            Analyzes a bug ticket for root cause, traces affected code, and
+            produces a fix plan saved to <code>.human/bugs/</code>.
+          </p>
+        </div>
+        <div class="skill">
+          <h3>/human-findbugs</h3>
+          <p>
+            Scans the codebase for bugs using a multi-agent pipeline. No ticket
+            needed. Finds logic errors, error handling gaps, race conditions,
+            and security vulnerabilities. Report saved to
+            <code>.human/bugs/</code>.
+          </p>
+        </div>
+        <div class="skill">
+          <h3>/human-security</h3>
+          <p>
+            Deep security audit with attack chain analysis. Maps the attack
+            surface, scans for injection, auth, secrets, dependency, and infra
+            vulnerabilities, then chains findings into exploitable paths. Report
+            saved to <code>.human/security/</code>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Run Claude Code in a devcontainer</h2>
+      <p style="color: #ccc; font-size: 1.1rem; margin-bottom: 0.5rem">
+        Works everywhere you code.
+      </p>
+      <p style="color: #888; font-size: 1.05rem; margin-bottom: 2rem">
+        AI agents inside devcontainers need access to issue trackers, Notion,
+        Figma, Amplitude, and Sentry &mdash; but credentials should stay on the
+        host.
+      </p>
+      <div class="window">
+        <div class="window-bar">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+          <span style="color: #888; font-size: 0.85rem; margin-left: 0.5rem"
+            >Host</span
+          >
+        </div>
+        <pre><code><span class="cmd">human</span> tui
+<span class="comment"># Starts daemon, shows dashboard with issues and pipeline state</span></code></pre>
+      </div>
+      <div class="window" style="margin-top: 1rem">
+        <div class="window-bar">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+          <span style="color: #888; font-size: 0.85rem; margin-left: 0.5rem"
+            >Container</span
+          >
+        </div>
+        <pre><code><span class="comment"># All commands work transparently</span>
+<span class="cmd">human</span> jira issues list <span class="flag">--project</span>=<span class="str">KAN</span>
+<span class="cmd">human</span> notion search <span class="str">"quarterly report"</span>
+<span class="cmd">human</span> figma file get <span class="str">ABC123</span></code></pre>
+      </div>
+      <p style="color: #888; font-size: 0.95rem; margin-top: 1.5rem">
+        Set <code>HUMAN_DAEMON_ADDR</code> and
+        <code>HUMAN_DAEMON_TOKEN</code> in your
+        <code>devcontainer.json</code> &mdash; all commands are forwarded to the
+        host daemon. Token-based auth keeps it secure.
+      </p>
+
+      <h3 style="margin-top: 2.5rem; color: #fff">
+        HTTPS Proxy &mdash; control what AI agents can reach
+      </h3>
+      <p style="color: #888; font-size: 1rem; margin-bottom: 1rem">
+        The daemon includes a transparent HTTPS proxy that filters outbound
+        traffic by domain using SNI inspection &mdash; no certificates, no
+        decryption. Configure an allowlist or blocklist in
+        <code>.humanconfig.yaml</code> to control which external services
+        containers can access.
+      </p>
+
+      <p style="color: #888; font-size: 0.95rem">
+        Want a ready-to-use devcontainer with human, proxy, and Chrome Bridge
+        pre-configured? See
+        <a
+          href="https://github.com/StephanSchmidt/treehouse"
+          target="_blank"
+          rel="noopener"
+          style="color: #4ee8c4"
+          >treehouse</a
+        >.
+      </p>
+
+      <h3 style="margin-top: 2.5rem; color: #fff">
+        Chrome Bridge &mdash; browse from inside the container
+      </h3>
+      <p style="color: #888; font-size: 1rem; margin-bottom: 1rem">
+        <code>claude --chrome</code> doesn&rsquo;t work in containers because
+        Chrome runs on the host. The Chrome Bridge tunnels the connection so
+        your AI agent can browse, inspect, and screenshot &mdash; transparently.
+      </p>
+      <div class="window">
+        <div class="window-bar">
+          <div class="dot red"></div>
+          <div class="dot yellow"></div>
+          <div class="dot green"></div>
+          <span style="color: #888; font-size: 0.85rem; margin-left: 0.5rem"
+            >Container</span
+          >
+        </div>
+        <pre><code><span class="cmd">human</span> chrome-bridge
+<span class="comment"># Claude Code can now use --chrome inside the container</span></code></pre>
+      </div>
+    </section>
+
+    <section class="built-for-teams">
+      <div>
+        <h2>Claude Code for teams</h2>
+        <p>
+          <code>human init</code> &mdash; one command, every tool configured. No
+          per-developer setup. No &ldquo;it works on my machine.&rdquo;
+        </p>
+        <ul class="team-features">
+          <li>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#4ee8c4"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 6L9 17l-5-5" />
+            </svg>
+            Credentials stay on the machine &mdash; the AI never sees API tokens
+            or passwords
+          </li>
+          <li>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#4ee8c4"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 6L9 17l-5-5" />
+            </svg>
+            Skills enforce the same workflow for every developer &mdash; same
+            flow, same results
+          </li>
+          <li>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#4ee8c4"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 6L9 17l-5-5" />
+            </svg>
+            Definition of Ready enforces ticket quality before coding starts
+          </li>
+          <li>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="#4ee8c4"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M20 6L9 17l-5-5" />
+            </svg>
+            Full audit trail &mdash; every agent action is logged, ready for SOC
+            2 and compliance
+          </li>
+        </ul>
+      </div>
+      <div class="team-visual">
+        <div class="team-visual-row">
+          <div class="team-avatar avatar-teal">AI</div>
+          <span><span class="cmd">human</span> jira issue get KAN-42</span>
+        </div>
+        <div class="team-visual-row">
+          <div class="team-avatar avatar-gold">AI</div>
+          <span
+            ><span class="cmd">human</span> linear issues list
+            --project=ENG</span
+          >
+        </div>
+        <div class="team-visual-row">
+          <div class="team-avatar avatar-pink">AI</div>
+          <span
+            ><span class="cmd">human</span> jira issue comment add KAN-42
+            "Done"</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Why not just use MCP servers?</h2>
+      <p style="color: #888; font-size: 1.05rem; margin-bottom: 2rem">
+        You can. It&rsquo;s like building a web app with raw Go libraries in
+        2004. Or you could use the framework.
+      </p>
+
+      <div class="comparison-container">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>MCP Servers</th>
+              <th>human CLI</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Setup &amp; Debugging</td>
+              <td>Hard to config &amp; troubleshoot</td>
+              <td class="highlight">Seconds (It just works)</td>
+            </tr>
+            <tr>
+              <td>Token Usage</td>
+              <td>High overhead (Bulk loading)</td>
+              <td class="highlight">
+                Up to 95% fewer tokens<sup
+                  ><a
+                    href="#source-1"
+                    style="color: inherit; text-decoration: none"
+                    >1</a
+                  ></sup
+                >
+              </td>
+            </tr>
+            <tr>
+              <td>Composability</td>
+              <td>Siloed / Not composable</td>
+              <td class="highlight">Unix pipes, loops, <code>jq</code></td>
+            </tr>
+            <tr>
+              <td>Discoverability</td>
+              <td>Hidden behind protocol</td>
+              <td class="highlight">Native <code>--help</code></td>
+            </tr>
+            <tr>
+              <td>Dual-Purpose</td>
+              <td>Agents only</td>
+              <td class="highlight">Agents &amp; Humans</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div id="source-1" class="quote-callout">
+        <p class="quote-text">
+          &ldquo;Every AI agent using MCP is quietly overpaying.&rdquo;
+        </p>
+        <p class="quote-source">
+          &mdash; Kan Yilmaz,
+          <a
+            href="https://kanyilmaz.me/2026/02/23/cli-vs-mcp.html"
+            target="_blank"
+            rel="noopener"
+            >I Made MCP 94% Cheaper</a
+          >
+        </p>
+      </div>
+      <p class="quote-footnote">
+        <sup>1</sup> Our measurement with <code>ttok</code> (Jira API vs
+        <code>human</code> JSON, 3 small tickets) shows 95% savings (bigger
+        tickets the overhead is less).
+      </p>
+    </section>
+
+    <section class="section faq-section" style="max-width: 860px">
+      <h2>Frequently asked questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>What is a dark software factory?</summary>
+          <p>
+            A dark software factory is an autonomous software delivery pipeline
+            where AI agents write, test, and ship code from specifications, the
+            way a lights-out manufacturing plant runs with no workers on the
+            floor. Humans stay on intent, policy, and outcome review. The term
+            was popularized by Dan Shapiro and has been adopted by BCG Platinion
+            and i-SCOOP as the category label for Level 5 AI-assisted coding.
+            <a href="/dark-software-factory/">Read the full explainer &rarr;</a>
+          </p>
+        </details>
+        <details class="faq-item">
+          <summary>How is human different from MCP servers?</summary>
+          <p>
+            MCP servers dump raw API responses into your Claude Code context
+            window, burning tokens. human is a CLI that extracts signal and
+            discards noise &mdash; our measurement shows up to 95% fewer tokens
+            than raw API or MCP responses. One install covers Jira, GitHub,
+            GitLab, Linear, Azure DevOps, Shortcut, ClickUp, Notion, Figma,
+            Amplitude, Sentry, and Telegram. One credential system. Works in
+            devcontainers.
+          </p>
+        </details>
+        <details class="faq-item">
+          <summary>Does human work with Claude Code in devcontainers?</summary>
+          <p>
+            Yes. human runs in daemon mode on the host and forwards commands
+            from inside the container transparently. Credentials stay on the
+            host, the AI never sees them. The Chrome Bridge tunnels
+            <code>claude --chrome</code> into the container so your agent can
+            browse and screenshot. MCP OAuth flows are proxied to the host
+            browser &mdash; no port forwarding hacks, no workarounds.
+          </p>
+        </details>
+        <details class="faq-item">
+          <summary>Which issue trackers does human support?</summary>
+          <p>
+            Jira (Cloud and Server), GitHub Issues and Projects, GitLab Issues,
+            Linear, Azure DevOps Boards, Shortcut, and ClickUp. Same commands
+            across all of them, so skills and scripts work regardless of which
+            tracker your team picks. Notion and ClickUp Docs are supported for
+            docs and wikis.
+          </p>
+        </details>
+        <details class="faq-item">
+          <summary>How do I install human?</summary>
+          <p>
+            One line: <code>curl -sSfL gethuman.sh/install.sh | bash</code>,
+            then <code>human init</code> to configure your connectors and
+            generate a devcontainer. Also available via Homebrew
+            (<code>brew install stephanschmidt/tap/human</code>), mise, and
+            <code>go install</code>.
+          </p>
+        </details>
+        <details class="faq-item">
+          <summary>Does human store my API credentials in the AI context?</summary>
+          <p>
+            No. Credentials are stored on your host machine and used by the CLI
+            process. The AI agent never sees tokens, passwords, or OAuth
+            secrets. Inside devcontainers, human uses a daemon-and-token model
+            so the container gets an ephemeral auth token but the real
+            credentials never cross the container boundary. Full audit trail is
+            available for SOC 2 and compliance.
+          </p>
+        </details>
+        <details class="faq-item">
+          <summary>Is human open source?</summary>
+          <p>
+            Yes. The source is on
+            <a href="https://github.com/StephanSchmidt/human" target="_blank" rel="noopener">GitHub</a>
+            and the CLI is free to install and use.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a dark software factory?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A dark software factory is an autonomous software delivery pipeline where AI agents write, test, and ship code from specifications, the way a lights-out manufacturing plant runs with no workers on the floor. Humans stay on intent, policy, and outcome review. The term was popularized by Dan Shapiro and has been adopted by BCG Platinion and i-SCOOP as the category label for Level 5 AI-assisted coding. Read the full explainer at https://gethuman.sh/dark-software-factory/"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is human different from MCP servers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MCP servers dump raw API responses into your Claude Code context window, burning tokens. human is a CLI that extracts signal and discards noise - our measurement shows up to 95% fewer tokens than raw API or MCP responses. One install covers Jira, GitHub, GitLab, Linear, Azure DevOps, Shortcut, ClickUp, Notion, Figma, Amplitude, Sentry, and Telegram. One credential system. Works in devcontainers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does human work with Claude Code in devcontainers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. human runs in daemon mode on the host and forwards commands from inside the container transparently. Credentials stay on the host, the AI never sees them. The Chrome Bridge tunnels claude --chrome into the container so your agent can browse and screenshot. MCP OAuth flows are proxied to the host browser - no port forwarding hacks, no workarounds."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which issue trackers does human support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Jira (Cloud and Server), GitHub Issues and Projects, GitLab Issues, Linear, Azure DevOps Boards, Shortcut, and ClickUp. Same commands across all of them, so skills and scripts work regardless of which tracker your team picks. Notion and ClickUp Docs are supported for docs and wikis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I install human?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "One line: curl -sSfL gethuman.sh/install.sh | bash, then human init to configure your connectors and generate a devcontainer. Also available via Homebrew (brew install stephanschmidt/tap/human), mise, and go install."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does human store my API credentials in the AI context?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Credentials are stored on your host machine and used by the CLI process. The AI agent never sees tokens, passwords, or OAuth secrets. Inside devcontainers, human uses a daemon-and-token model so the container gets an ephemeral auth token but the real credentials never cross the container boundary. Full audit trail is available for SOC 2 and compliance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is human open source?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The source is on GitHub at github.com/StephanSchmidt/human and the CLI is free to install and use."
+          }
+        }
+      ]
+    }
+    </script>
+
+    {{ partial "footer.html" . }}
+
+    <script>
+      function copyToClipboard(text, element) {
+        if (element.innerText.includes("Copied")) return;
+
+        navigator.clipboard.writeText(text.trim()).then(() => {
+          const originalText = element.innerText;
+          const originalWidth = element.offsetWidth;
+
+          element.style.width = originalWidth + "px";
+          element.innerText = "Copied! 🚀";
+          element.classList.add("copied");
+
+          setTimeout(() => {
+            element.innerText = originalText;
+            element.style.width = "";
+            element.classList.remove("copied");
+          }, 2000);
+        });
+      }
+
+      document.querySelectorAll(".install").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const text = btn.dataset.copy || btn.innerText;
+          copyToClipboard(text, btn);
+        });
+      });
+
+      // Sticky nav: visible from page load on homepage, toggle scrolled state
+      const stickyNav = document.getElementById("sticky-nav");
+      const heroSection = document.querySelector(".hero");
+      stickyNav.classList.add("visible");
+      const fadeStart = 80;   // 5rem – blur & opacity begin
+      const fadeEnd = 160;    // 10rem – fully applied
+      function updateNavBlur() {
+        const y = window.scrollY;
+        if (y <= fadeStart) {
+          stickyNav.style.background = "transparent";
+          stickyNav.style.backdropFilter = "none";
+          stickyNav.style.webkitBackdropFilter = "none";
+          stickyNav.style.borderBottomColor = "transparent";
+          stickyNav.classList.remove("scrolled");
+        } else if (y >= fadeEnd) {
+          stickyNav.style.background = "";
+          stickyNav.style.backdropFilter = "";
+          stickyNav.style.webkitBackdropFilter = "";
+          stickyNav.style.borderBottomColor = "";
+          stickyNav.classList.add("scrolled");
+        } else {
+          const t = (y - fadeStart) / (fadeEnd - fadeStart);
+          const blur = t * 12;
+          const alpha = t * 0.85;
+          stickyNav.style.background = `rgba(13, 13, 13, ${alpha})`;
+          stickyNav.style.backdropFilter = `blur(${blur}px)`;
+          stickyNav.style.webkitBackdropFilter = `blur(${blur}px)`;
+          stickyNav.style.borderBottomColor = `rgba(255, 255, 255, ${t * 0.1})`;
+          stickyNav.classList.add("scrolled");
+        }
+      }
+      window.addEventListener("scroll", updateNavBlur, { passive: true });
+      updateNavBlur();
+
+      // Fetch actual star count from GitHub
+      fetch("{{ .Site.Params.githubAPI }}")
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.stargazers_count !== undefined) {
+            document.getElementById("star-count-nav").textContent =
+              data.stargazers_count;
+          }
+        })
+        .catch((err) => console.error("Error fetching stars:", err));
+    </script>
+    <!-- 100% privacy-first analytics -->
+    <script
+      async
+      src="https://scripts.simpleanalyticscdn.com/latest.js"
+    ></script>
+  </body>
+</html>

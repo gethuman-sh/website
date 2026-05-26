@@ -1,0 +1,15 @@
+{{ $currentPage := . }}
+{{ $tutorialSection := site.GetPage "tutorial" }}
+{{ if $tutorialSection }}
+<nav class="docs-sidebar" id="docs-sidebar">
+  <ul class="docs-sidebar-list">
+    <li><a href="{{ $tutorialSection.Permalink }}"{{ if eq $currentPage.RelPermalink $tutorialSection.RelPermalink }} class="active"{{ end }}>Overview</a></li>
+  </ul>
+
+  <ul class="docs-sidebar-list">
+    {{ range $tutorialSection.Pages.ByWeight }}
+    <li><a href="{{ .Permalink }}"{{ if eq $currentPage.RelPermalink .RelPermalink }} class="active"{{ end }}>{{ with .Params.sidebar_title }}{{ . }}{{ else }}{{ .Title }}{{ end }}</a></li>
+    {{ end }}
+  </ul>
+</nav>
+{{ end }}

@@ -1,0 +1,9 @@
+{{- /* Canonical publisher Organization, shared across all JSON-LD via a stable @id. */ -}}
+{{- $o := .Site.Params.organization -}}
+{{- dict
+  "@type" "Organization"
+  "@id" (printf "%s#org-human" .Site.BaseURL)
+  "name" $o.name
+  "url" .Site.BaseURL
+  "sameAs" $o.sameAs
+| jsonify -}}

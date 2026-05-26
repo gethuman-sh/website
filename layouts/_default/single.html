@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  {{ partial "head.html" . }}
+  <body>
+    <style>
+      .page-container {
+        max-width: 760px;
+        margin-inline: auto;
+        padding-block: 3rem;
+        padding-inline: 2rem;
+      }
+
+      .page-container .logo-link {
+        display: inline-block;
+        margin-block-end: 2rem;
+        text-decoration: none;
+      }
+
+      .page-container .logo-link img {
+        width: 48px;
+      }
+
+      .page-container h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-block-end: 2rem;
+      }
+
+      .page-container h2 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #f0f0f0;
+        margin-block-start: 2rem;
+        margin-block-end: 0.75rem;
+      }
+
+      .page-container p {
+        color: var(--text);
+        line-height: 1.7;
+        margin-block-end: 0.75rem;
+      }
+    </style>
+
+    {{ partial "header.html" (dict "Page" . "alwaysVisible" true) }}
+
+    <div class="page-container" style="padding-block-start: 5rem;">
+      <a href="/" class="logo-link">
+        <img src="/h-l2.svg" alt="human logo" />
+      </a>
+      <h1>{{ .Title }}</h1>
+      {{ .Content }}
+    </div>
+
+    {{ partial "footer.html" . }}
+
+    <script>
+      fetch("{{ .Site.Params.githubAPI }}")
+        .then(res => res.json())
+        .then(data => {
+          if (data.stargazers_count !== undefined) {
+            const el = document.getElementById("star-count-nav");
+            if (el) el.textContent = data.stargazers_count;
+          }
+        })
+        .catch(() => {});
+    </script>
+    <!-- 100% privacy-first analytics -->
+    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+  </body>
+</html>

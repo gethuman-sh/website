@@ -1,0 +1,15 @@
+---
+background: transparent
+arrow-color: #ffeedd
+---
+
+I: 1,1: /human-ideate
+P: 4,1: /human-plan
+B: 1,3: /human-bug-plan
+E: 4,3: /human-execute
+V: 7,1: /human-review
+
+I -> P
+P -> E
+B -> E
+E -> V

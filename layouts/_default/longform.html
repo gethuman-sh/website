@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+  {{ partial "head.html" . }}
+  <body>
+    <style>
+      .longform {
+        max-width: 760px;
+        margin-inline: auto;
+        padding-block: 6rem 4rem;
+        padding-inline: 1.5rem;
+      }
+
+      .longform h1 {
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: var(--white);
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        margin-block-end: 1rem;
+      }
+
+      .longform .article-subtitle {
+        font-size: 1.35rem;
+        line-height: 1.45;
+        color: #bbb;
+        font-weight: 400;
+        margin-block-end: 1.75rem;
+        max-width: 640px;
+      }
+
+      .longform .byline {
+        color: var(--text-dim);
+        font-size: 0.95rem;
+        margin-block-end: 3rem;
+        padding-block-end: 2rem;
+        border-block-end: 1px solid var(--border);
+      }
+
+      .longform .byline a {
+        color: #ccc;
+        text-decoration: none;
+        border-block-end: 1px dotted rgba(78, 232, 196, 0.4);
+      }
+
+      .longform .byline a:hover {
+        color: var(--teal);
+      }
+
+      .longform-body {
+        color: var(--text);
+        font-size: 1.15rem;
+        line-height: 1.75;
+      }
+
+      .longform-body .tldr {
+        margin-block: 0 2.5rem;
+        padding: 1.5rem 1.75rem;
+        background: rgba(78, 232, 196, 0.04);
+        border-inline-start: 3px solid var(--teal);
+        border-radius: 0 8px 8px 0;
+      }
+
+      .longform-body .tldr .tldr-label {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--teal);
+        margin-block-end: 0.75rem;
+      }
+
+      .longform-body .tldr p {
+        font-size: 1.08rem;
+        line-height: 1.7;
+        color: #d0d0d0;
+        margin: 0;
+      }
+
+      .longform-body h2 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-block: 3rem 1rem;
+        line-height: 1.25;
+        letter-spacing: -0.01em;
+      }
+
+      .longform-body h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #f0f0f0;
+        margin-block: 2rem 0.75rem;
+      }
+
+      .longform-body p {
+        margin-block-end: 1.25rem;
+      }
+
+      .longform-body ul,
+      .longform-body ol {
+        margin-block-end: 1.25rem;
+        padding-inline-start: 1.5rem;
+      }
+
+      .longform-body li {
+        margin-block-end: 0.5rem;
+      }
+
+      .longform-body a {
+        color: var(--teal);
+        text-decoration: none;
+        border-block-end: 1px solid rgba(78, 232, 196, 0.35);
+      }
+
+      .longform-body a:hover {
+        border-block-end-color: var(--teal);
+      }
+
+      .longform-body blockquote {
+        margin-block: 1.5rem;
+        padding-inline-start: 1.25rem;
+        border-inline-start: 3px solid var(--teal);
+        color: #ccc;
+        font-style: italic;
+      }
+
+      .longform-body code {
+        background: rgba(78, 232, 196, 0.08);
+        color: var(--teal);
+        padding: 0.1rem 0.4rem;
+        border-radius: 4px;
+        font-family: var(--font-mono);
+        font-size: 0.92em;
+      }
+
+      .longform-body pre {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 1.25rem;
+        overflow-x: auto;
+        margin-block: 1.5rem;
+      }
+
+      .longform-body pre code {
+        background: transparent;
+        color: var(--text);
+        padding: 0;
+        font-size: 0.9rem;
+      }
+
+      .longform-body strong {
+        color: var(--white);
+      }
+
+      .longform-body hr {
+        border: none;
+        border-block-start: 1px solid var(--border);
+        margin-block: 2.5rem;
+      }
+
+      .longform-body sup[id^="fnref"] a {
+        color: var(--teal);
+        text-decoration: none;
+        border: none;
+        font-weight: 600;
+        padding-inline: 0.15rem;
+      }
+
+      .longform-body sup[id^="fnref"] a:hover {
+        color: var(--white);
+      }
+
+      .longform-body .footnotes {
+        margin-block-start: 3rem;
+        font-size: 0.95rem;
+        color: #bbb;
+      }
+
+      .longform-body .footnotes hr {
+        display: block;
+        border: none;
+        border-block-start: 1px solid var(--border);
+        margin-block: 0 2rem;
+      }
+
+      .longform-body .footnotes ol {
+        padding-inline-start: 1.25rem;
+      }
+
+      .longform-body .footnotes ol::before {
+        content: "Sources";
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--text-dim);
+        margin-block-end: 1.25rem;
+        margin-inline-start: -1.25rem;
+      }
+
+      .longform-body .footnotes li {
+        margin-block-end: 1rem;
+        line-height: 1.6;
+      }
+
+      .longform-body .footnotes li p {
+        margin: 0;
+      }
+
+      .longform-body .footnotes a.footnote-backref {
+        color: var(--teal);
+        text-decoration: none;
+        border: none;
+        margin-inline-start: 0.35rem;
+      }
+
+      .longform-body .footnotes a.footnote-backref:hover {
+        color: var(--white);
+      }
+
+      .longform-related {
+        margin-block-start: 4rem;
+        padding-block-start: 2rem;
+        border-block-start: 1px solid var(--border);
+      }
+
+      .longform-related h3 {
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: var(--text-dim);
+        font-weight: 600;
+        margin-block-end: 1rem;
+      }
+
+      .longform-related ul {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .longform-related li {
+        margin: 0;
+      }
+
+      .longform-related a {
+        color: #f0f0f0;
+        text-decoration: none;
+        font-size: 1.05rem;
+      }
+
+      .longform-related a:hover {
+        color: var(--teal);
+      }
+
+      .longform-related .related-date {
+        display: block;
+        font-size: 0.85rem;
+        color: var(--text-dim);
+        margin-block-start: 0.2rem;
+      }
+
+      @media (max-width: 600px) {
+        .longform h1 {
+          font-size: 1.8rem;
+        }
+        .longform-body {
+          font-size: 1.05rem;
+        }
+        .longform-body h2 {
+          font-size: 1.35rem;
+        }
+      }
+    </style>
+
+    {{ partial "header.html" (dict "Page" . "alwaysVisible" true) }}
+
+    <article class="longform">
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.subtitle }}
+      <p class="article-subtitle">{{ . }}</p>
+      {{ end }}
+      {{ with .Params.author }}
+      <p class="byline">
+        By {{ . }}{{ if not $.Date.IsZero }} &middot;
+        <time datetime="{{ $.Date.Format "2006-01-02" }}">{{ $.Date.Format "January 2, 2006" }}</time>{{ end }}
+      </p>
+      {{ end }}
+      <div class="longform-body">
+        {{ .Content }}
+      </div>
+
+      {{/* Related reading: articles tagged dark-factory, excluding this page */}}
+      {{ $related := where (where site.RegularPages "Section" "articles") "Params.tags" "intersect" (slice "dark-factory") }}
+      {{ $related = where $related "Permalink" "!=" .Permalink }}
+      {{ if $related }}
+      <section class="longform-related">
+        <h3>Related reading</h3>
+        <ul>
+          {{ range first 5 $related }}
+          <li>
+            <a href="{{ .Permalink }}">
+              {{ .Title }}
+              <span class="related-date">{{ .Date.Format "January 2, 2006" }}</span>
+            </a>
+          </li>
+          {{ end }}
+        </ul>
+      </section>
+      {{ end }}
+    </article>
+
+    {{ partial "footer.html" . }}
+
+    <script>
+      fetch("{{ .Site.Params.githubAPI }}")
+        .then(res => res.json())
+        .then(data => {
+          if (data.stargazers_count !== undefined) {
+            const el = document.getElementById("star-count-nav");
+            if (el) el.textContent = data.stargazers_count;
+          }
+        })
+        .catch(() => {});
+    </script>
+    <!-- 100% privacy-first analytics -->
+    <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
+  </body>
+</html>

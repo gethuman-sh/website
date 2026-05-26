@@ -1,0 +1,43 @@
+baseURL = "https://gethuman.sh/"
+locale = "en"
+title = "human - The Dark Software Factory for Claude Code"
+disableKinds = ["taxonomy", "term"]
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[permalinks]
+  articles = "/:contentbasename/"
+
+[params]
+  description = "The dark software factory for Claude Code. Connect Jira, GitHub, Linear, Notion, Figma, Amplitude and Sentry with 95% fewer tokens than MCP servers. Secure devcontainer, Chrome Bridge, and lifecycle skills included."
+  ogDescription = "The dark software factory for Claude Code. Connect Jira, GitHub, Linear, Notion, Figma with 95% fewer tokens than MCP servers. Secure devcontainer and lifecycle skills included."
+  githubRepo = "https://github.com/StephanSchmidt/human"
+  githubAPI = "https://api.github.com/repos/StephanSchmidt/human"
+
+# Canonical author entity, referenced from JSON-LD (see partials/jsonld-person.html).
+# Add more profile URLs to sameAs (X, LinkedIn, Mastodon) to strengthen entity resolution.
+[params.author]
+  name = "Stephan Schmidt"
+  url = "https://www.amazingcto.com/"
+  sameAs = [
+    "https://www.amazingcto.com/",
+    "https://github.com/StephanSchmidt",
+    "https://www.linkedin.com/in/stephanjschmidt/",
+  ]
+
+[params.organization]
+  name = "human"
+  sameAs = [
+    "https://github.com/StephanSchmidt/human",
+  ]
+
+# Plain-text llms.txt output for AI crawlers (rendered by layouts/index.llms.txt).
+[outputFormats.llms]
+  mediaType = "text/plain"
+  baseName = "llms"
+  isPlainText = true
+  notAlternative = true
+
+[outputs]
+  home = ["HTML", "RSS", "llms"]
