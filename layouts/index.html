@@ -278,7 +278,8 @@
           <p>
             <a href="/features/skills/">Built-in Claude Code skills</a> for
             the full lifecycle: /human-ready, /human-plan, /human-execute,
-            /human-review, /human-bug-plan, /human-findbugs, /human-security.
+            /human-review, /human-bug-plan, /human-autofix, /human-findbugs,
+            /human-security.
           </p>
         </div>
         <div class="battery-card">
@@ -729,6 +730,15 @@
           <p>
             Analyzes a bug ticket for root cause, traces affected code, and
             produces a fix plan saved to <code>.human/bugs/</code>.
+          </p>
+        </div>
+        <div class="skill">
+          <h3>/human-autofix</h3>
+          <p>
+            Runs the full bug-fix pipeline autonomously: triage to a verdict,
+            regression-test-first fix on an <code>autofix/</code> branch,
+            fails-before/passes-after verification, then opens a PR and hands it
+            off for review. Confirmed and verified fixes only.
           </p>
         </div>
         <div class="skill">

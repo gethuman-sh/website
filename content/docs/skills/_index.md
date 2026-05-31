@@ -25,6 +25,7 @@ This writes skill and agent definitions to your project's `.claude/skills/` and 
 | [/human-execute](/docs/skills/human-execute/) | Execute a plan step by step |
 | [/human-review](/docs/skills/human-review/) | Review changes against acceptance criteria |
 | [/human-bug-plan](/docs/skills/human-bug-plan/) | Analyze a bug and create a fix plan |
+| [/human-autofix](/docs/skills/human-autofix/) | Autonomously triage, fix, verify, and open a PR for a bug ticket |
 | [/human-findbugs](/docs/skills/human-findbugs/) | Scan the codebase for bugs using a multi-agent pipeline |
 | [/human-security](/docs/skills/human-security/) | Deep security audit with attack chain analysis |
 | [/human-gardening](/docs/skills/human-gardening/) | Codebase health analysis with health scorecard and optional auto-fix |
@@ -39,7 +40,7 @@ The skills follow a development lifecycle:
 
 Or run the full pipeline in one command with `/human-sprint`.
 
-For existing tickets that weren't created through `/human-ideate`, start with `/human-ready` to validate them, then `/human-plan`. For bugs, use `/human-bug-plan`. For proactive bug scanning, use `/human-findbugs`. For security audits, use `/human-security`. For codebase health checks, use `/human-gardening`.
+For existing tickets that weren't created through `/human-ideate`, start with `/human-ready` to validate them, then `/human-plan`. For bugs, use `/human-bug-plan` to analyze and plan a fix, or `/human-autofix` to triage, fix, verify, and open a PR autonomously end to end. For proactive bug scanning, use `/human-findbugs`. For security audits, use `/human-security`. For codebase health checks, use `/human-gardening`.
 
 You can use the full chain or individual skills independently. For example, `/human-review` works on any branch with changes, whether or not a plan exists.
 

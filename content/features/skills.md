@@ -2,7 +2,7 @@
 title: "Built-in Development Skills for Claude Code"
 sidebar_title: "Development Skills"
 weight: 6
-description: "Claude Code skills for the full development lifecycle — Definition of Ready, brainstorming, planning, execution, code review, bug analysis, security audits, and codebase health gardening. Built-in slash commands that work with any issue tracker."
+description: "Claude Code skills for the full development lifecycle — Definition of Ready, brainstorming, planning, execution, code review, bug analysis, autonomous bug fixing, security audits, and codebase health gardening. Built-in slash commands that work with any issue tracker."
 subtitle: "From ticket to shipped code. Built-in Claude Code skills cover readiness checks, planning, execution, and review."
 docs_link: /docs/skills/
 ---
@@ -105,6 +105,16 @@ Analyzes a bug ticket for root cause, traces affected code paths, and produces a
 /human-bug-plan BUG-17
 ```
 
+### /human-autofix — Autonomous bug-fix pipeline
+
+Runs the full bug-fix pipeline autonomously against a bug ticket — no user interaction. Triages and reproduces the bug to a verdict (confirmed, not-a-bug, or undetermined); only confirmed bugs proceed. Writes a regression-test-first plan and a linked engineering ticket, opens an `autofix/<eng-key>` branch with a failing regression test, makes the root-cause fix until the suite is green, then verifies fails-before/passes-after. Only confirmed and verified fixes open a PR via `human pr create` and post a `[human:ready-for-review]` handoff comment carrying the PR URL.
+
+```
+/human-autofix BUG-17
+```
+
+The whole run is auditable on the tracker: bug comment → engineering ticket → PR. It won't claim success unless the suite is green and the PR has opened.
+
 ### /human-findbugs — Proactive bug scanning
 
 Scans the codebase for bugs using a multi-agent pipeline. No ticket needed. Finds logic errors, error handling gaps, race conditions, and security vulnerabilities that existing tests miss.
@@ -162,7 +172,7 @@ Reports are markdown, easy to review, and tracked in git. Your team's developmen
 
 ## Claude Code code review and bug analysis skills
 
-`/human-review` runs a code review of the current branch's changes against the ticket's acceptance criteria, flagging gaps, scope creep, and missing edge cases — essentially a senior developer's pre-merge review pass, run automatically. `/human-bug-plan` takes a bug ticket and produces a root-cause analysis with a fix plan, understanding the difference between "add a feature" and "diagnose a bug". `/human-findbugs` scans the codebase proactively without a ticket, finding logic errors, error handling gaps, race conditions, and security holes that existing tests miss.
+`/human-review` runs a code review of the current branch's changes against the ticket's acceptance criteria, flagging gaps, scope creep, and missing edge cases — essentially a senior developer's pre-merge review pass, run automatically. `/human-bug-plan` takes a bug ticket and produces a root-cause analysis with a fix plan, understanding the difference between "add a feature" and "diagnose a bug". `/human-autofix` goes one step further: it runs the whole bug-fix pipeline autonomously — triage to verdict, regression-test-first fix on an `autofix/` branch, fails-before/passes-after verification, then opens a PR and hands it off for review, with the full chain (bug comment → engineering ticket → PR) auditable on the tracker. `/human-findbugs` scans the codebase proactively without a ticket, finding logic errors, error handling gaps, race conditions, and security holes that existing tests miss.
 
 ## Why skills, not prompts
 

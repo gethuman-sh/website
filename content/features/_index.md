@@ -31,6 +31,7 @@ weight: 1
 - **[/human-review](/features/skills/)** — review the current branch's changes against the ticket's acceptance criteria
 - **[/human-done](/features/skills/)** — evaluate whether the implementation is complete and shippable
 - **[/human-bug-plan](/features/skills/)** — analyze a bug ticket for root cause and produce a fix plan
+- **[/human-autofix](/features/skills/)** — autonomously triage a bug to a verdict, fix it test-first on an `autofix/` branch, verify fails-before/passes-after, then open a PR and hand it off for review
 - **[/human-findbugs](/features/skills/)** — scan the codebase for logic errors, race conditions, and security issues with a multi-agent pipeline
 - **[/human-security](/features/skills/)** — deep security audit with attack surface mapping, OWASP Top 10 scanning, and attack chain analysis
 - **[/human-gardening](/features/skills/)** — analyze structural debt, duplication, and complexity hotspots with a health scorecard
