@@ -5,12 +5,12 @@
     {{ partial "header.html" (dict "Page" . "alwaysVisible" false "homepage"
     true) }}
     <section class="hero">
-      <img src="h-l2.svg" alt="human - the dark software factory for Claude Code" />
-      <h1>Your Dark Software Factory.</h1>
-      <p class="eyebrow">You have the idea. Claude builds and ships it.</p>
+      <img src="h-l2.svg" alt="human - the AI dev rig: everything your AI development needs, best of breed, already wired" />
+      <h1>Everything your AI development needs &mdash; best of breed, already wired.</h1>
+      <p class="eyebrow">Nothing to research. Nothing to assemble. Nothing to keep up with.</p>
       <p class="tagline">
-        human is an open-source CLI that runs Claude Code inside a secure devcontainer, wired into your tracker, docs, designs, and analytics.
-        One command takes a ticket from idea to shipped code. You review the outcome, not every diff.
+        human is your team's AI dev rig &mdash; the best tool in every category (trackers, docs, designs, analytics, a secure sandbox, and the workflow),
+        already integrated and configured the right way around the coding agent you already run. Stop hunting for tools and wiring them together. Start shipping.
       </p>
       <div class="trackers">
         <img src="jira.svg" alt="Jira" />
@@ -41,27 +41,30 @@
     <section class="pillars">
       <div class="pillars-grid">
         <div class="pillar-card">
-          <h3>The Control Room</h3>
+          <h3>Secure by default</h3>
           <div class="pillar-img">
-            <img src="human-tui.png" alt="human TUI dashboard showing Claude Code token usage and tracker issues" />
+            <img src="architecture.svg" alt="Secure devcontainer for AI coding agents with daemon, firewall, secret redaction, and vault credentials" />
           </div>
           <p>
-            Monitor running agents, token usage, tracker issues, and
-            pipeline state in real time. One view for everything.
+            Outbound firewall, secret-redacting filesystem, vault-resolved
+            credentials, isolated devcontainer. The agent works on your code
+            and never sees your tokens.
           </p>
         </div>
         <div class="pillar-card">
-          <h3>The Fence</h3>
-          <div class="pillar-img">
-            <img src="architecture.svg" alt="Secure devcontainer architecture for Claude Code with daemon, firewall, and Chrome Bridge" />
+          <h3>Saving tokens</h3>
+          <div class="pillar-img context-visual">
+            <span style="font-size: 3rem; font-weight: 700; color: var(--teal); line-height: 1;">95%</span>
+            <span class="context-label">Fewer Tokens</span>
           </div>
           <p>
-            Just works. OAuth, Claude subscriptions, MCP, browser access,
-            Chrome Bridge, firewall &mdash; all configured out of the box.
+            Structural code navigation and signal-extracted tracker data
+            &mdash; up to 95% fewer tokens than raw APIs or MCP. The cost
+            that scales with team, agents, and tickets, cut at the root.
           </p>
         </div>
         <div class="pillar-card">
-          <h3>Intent In</h3>
+          <h3>Context engineering</h3>
           <div class="pillar-img context-visual">
             <div class="context-logos">
               <img src="jira.svg" alt="Jira" />
@@ -77,62 +80,63 @@
             <span class="context-label">Cross Context Search</span>
           </div>
           <p>
-            Connectors for every source. Cross-tracker and Notion search,
-            local fast index. Your AI sees everything it needs.
+            Connectors for every source, one cross-source search, and
+            codebase indexing. The agent builds from what the ticket,
+            design, and data actually say.
           </p>
         </div>
         <div class="pillar-card">
-          <h3>Outcome Review</h3>
-          <div class="pillar-img">
-            <img src="skills.svg" alt="Claude Code lifecycle skills: ideate, plan, execute, review" />
+          <h3>Best of breed, one install</h3>
+          <div class="pillar-img context-visual">
+            <span style="font-size: 2.6rem; font-weight: 700; color: var(--teal); line-height: 1;">20&nbsp;&rarr;&nbsp;1</span>
+            <span class="context-label">Tools, One Rig</span>
           </div>
           <p>
-            Ideate, plan, execute, review. One command runs the full
-            pipeline from rough idea to shipped code.
+            The best tool in every category, tested together. One vendor,
+            one credential system, one attack surface &mdash; and we keep it
+            current.
+          </p>
+        </div>
+        <div class="pillar-card">
+          <h3>You in control</h3>
+          <div class="pillar-img">
+            <img src="human-tui.png" alt="human dashboard showing running AI agents, token usage, and pipeline state" />
+          </div>
+          <p>
+            A live dashboard of agents, tokens, and pipeline state,
+            guardrails and policy rules, and a full audit trail. You see and
+            steer what the agent does.
+          </p>
+        </div>
+        <div class="pillar-card">
+          <h3>Automatic development</h3>
+          <div class="pillar-img">
+            <img src="skills.svg" alt="AI development lifecycle skills: ideate, plan, execute, review" />
+          </div>
+          <p>
+            Lifecycle skills from ideate to review, plus optional autonomous
+            bug-fixing. Adopt with full control today; turn autonomy up when
+            you're ready.
           </p>
         </div>
       </div>
     </section>
 
     <section class="section dark-factory-explainer" style="max-width: 860px">
-      <h2>What is a dark software factory?</h2>
+      <h2>Automatic development &mdash; autonomy on a dial</h2>
       <p class="section-subtitle">
-        In manufacturing, a dark factory runs with the lights off &mdash; the
-        machines don&rsquo;t need them. In software, it&rsquo;s the same idea:
-        AI agents write the code, test it against scenarios they&rsquo;ve never
-        seen, and ship it. No one reviews diffs line by line.
+        Start with the coding agent in your process and you in control of every
+        step. When you&rsquo;ve built trust, turn the dial up: human can take
+        whole tickets end to end &mdash; ideate, plan, execute, review, and even
+        fix bugs autonomously &mdash; on the same fenced, audited rig.
       </p>
       <p class="section-subtitle">
-        But the lights aren&rsquo;t off everywhere. Someone still has to define
-        what to build, feed the factory real context, set the policies, and
-        decide when an outcome is good enough. That work stays human.
-      </p>
-      <p class="section-subtitle">
-        That&rsquo;s what human is. It&rsquo;s the part of the dark factory
-        where people belong:
-      </p>
-      <ul class="dark-factory-list">
-        <li>
-          <strong>Intent in.</strong> Tickets, docs, designs, analytics &mdash;
-          the real context Claude needs to build the right thing, not just any
-          thing.
-        </li>
-        <li>
-          <strong>Policy around the line.</strong> Secure devcontainer,
-          credential isolation, outbound allowlists, full audit trail. The
-          factory runs, but only inside the fence you drew.
-        </li>
-        <li>
-          <strong>Review on outcomes, not diffs.</strong> Skills for ideation,
-          planning, execution, and review. You approve what shipped, not every
-          line that led there.
-        </li>
-      </ul>
-      <p class="section-subtitle" style="margin-top: 1.5rem">
-        Claude runs the line. You stay on intent. The factory handles the rest.
+        You decide how far it goes. The guardrails, audit trail, and human
+        approval gates stay the same at every level of autonomy &mdash;
+        automation is an option you switch on, never a precondition.
       </p>
       <p class="section-subtitle" style="margin-top: 1rem">
-        For the full story &mdash; origin, five levels, StrongDM example, critiques &mdash; read
+        Curious how far this goes? Read
         <a href="/dark-software-factory/" style="color: #4ee8c4; text-decoration: none; border-bottom: 1px solid rgba(78, 232, 196, 0.4);">What is a Dark Software Factory?</a>
       </p>
     </section>
@@ -298,10 +302,10 @@
               <polyline points="8 6 2 12 8 18" />
             </svg>
           </div>
-          <h3>Token Optimization</h3>
+          <h3>Saving tokens</h3>
           <p>
-            95% fewer Claude Code tokens vs raw APIs and MCP servers &mdash;
-            stay under your daily limit.
+            95% fewer tokens vs raw APIs and MCP servers &mdash; the cost that
+            scales with every engineer, agent, and ticket.
           </p>
         </div>
         <div class="battery-card">
@@ -402,10 +406,10 @@
     </section>
 
     <section class="stop-assembling">
-      <h2>The factory is engineered, not improvised.</h2>
+      <h2>One rig, not twenty tools to vet and maintain.</h2>
       <p class="section-subtitle">
-        One install gives your AI agent superpowers across your entire
-        toolchain.
+        One install replaces a stack of point tools your team would otherwise
+        source, secure, and keep current &mdash; across your entire toolchain.
       </p>
 
       <div class="pain-grid">
@@ -461,17 +465,17 @@
     </section>
 
     <section class="rails-callout">
-      <strong>human is where the humans belong in a dark factory.</strong>
+      <strong>Your whole AI dev stack, in one rig.</strong>
       <p>
-        Intent in. Outcomes reviewed. The line runs between.<br />
-        Stop assembling your stack. Start specifying the work.
+        One vendor. One attack surface. Best practices included.<br />
+        Stop assembling your stack. Start shipping.
       </p>
 
       <div class="without-with">
         <div class="without-with-col">
           <h3 class="without-label">WITHOUT HUMAN</h3>
           <ul>
-            <li>Find &amp; vet each MCP server</li>
+            <li>Vet 20 separate tools &amp; vendors</li>
             <li>Configure each separately</li>
             <li>Manage 9 sets of credentials</li>
             <li>Hope it works in devcontainers</li>
@@ -506,10 +510,11 @@
 
     <section class="section">
       <div class="context-window-header">
-        <h2>Stop burning Claude Code tokens on MCP servers</h2>
+        <h2>The AI coding cost that scales with your team</h2>
         <p>
-          MCP servers dump raw API responses into your context. human extracts
-          signal, discards noise. Stop hitting your daily token limit by lunch.
+          Raw APIs and MCP servers dump bloated responses into context, and you
+          pay for every token &mdash; times every engineer, agent, and ticket.
+          human extracts signal, discards noise: up to 95% fewer tokens.
         </p>
       </div>
 

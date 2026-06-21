@@ -1,6 +1,6 @@
 baseURL = "https://gethuman.sh/"
 locale = "en"
-title = "human - The Dark Software Factory for Claude Code"
+title = "human - The AI dev rig for AI coding agents"
 disableKinds = ["taxonomy", "term"]
 
 [markup.goldmark.renderer]
@@ -10,8 +10,8 @@ disableKinds = ["taxonomy", "term"]
   articles = "/:contentbasename/"
 
 [params]
-  description = "The dark software factory for Claude Code. Connect Jira, GitHub, Linear, Notion, Figma, Amplitude and Sentry with 95% fewer tokens than MCP servers. Secure devcontainer, Chrome Bridge, and lifecycle skills included."
-  ogDescription = "The dark software factory for Claude Code. Connect Jira, GitHub, Linear, Notion, Figma with 95% fewer tokens than MCP servers. Secure devcontainer and lifecycle skills included."
+  description = "human is your AI dev rig: every best-of-breed tool your AI development needs, secured and wired around the coding agent you already run. Connect Jira, GitHub, Linear, Notion, Figma, Amplitude and Sentry with 95% fewer tokens, guardrails, audit trail, and context engineering."
+  ogDescription = "Your AI dev rig: every best-of-breed tool your AI development needs, secured and wired around the coding agent you already run. 95% fewer tokens, guardrails, and full context."
   githubRepo = "https://github.com/StephanSchmidt/human"
   githubAPI = "https://api.github.com/repos/StephanSchmidt/human"
 
